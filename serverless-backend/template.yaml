@@ -1,0 +1,59 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  planet-hack
+
+Globals:
+  Function:
+    Timeout: 30
+
+Parameters:
+  PlanetApiKey:
+    Type: String
+    Description: The Planet Labs API Key
+
+Resources:
+
+  PlanetApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Auth:
+        ApiKeyRequired: true 
+        UsagePlan:
+          CreateUsagePlan: PER_API
+
+  FetchImageFromGPSCoords:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda_functions/fetchImageFromGPSCoords/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Environment:
+        Variables:
+          BUCKET: !Ref Bucket
+          PLANET_API_KEY: !Ref PlanetApiKey
+      Policies:
+        - S3WritePolicy:
+            BucketName: !Ref Bucket
+      Events:
+        get:
+          Type: Api
+          Properties:
+            RestApiId: !Ref PlanetApi
+            Path: /image/gps/{coords+}
+            Method: get
+  
+  Bucket:
+      Type: AWS::S3::Bucket
+
+Outputs:
+  PlanetApiUrl:
+    Description: "API GW endpoint"
+    Value: !Sub "https://${PlanetApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
+  PlanetApiKey:
+    Description: "Api key"
+    Value: !Sub "https://${AWS::Region}.console.aws.amazon.com/apigateway/home?region=${AWS::Region}#/api-keys/${PlanetApi.ApiKey}"
+  S3Bucket:
+      Description: "S3 Bucket that images get uploaded to"
+      Value: !Ref Bucket
