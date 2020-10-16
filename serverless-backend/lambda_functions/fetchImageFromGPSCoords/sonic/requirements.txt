@@ -1,0 +1,3 @@
+python-sonic
+planet
+requests

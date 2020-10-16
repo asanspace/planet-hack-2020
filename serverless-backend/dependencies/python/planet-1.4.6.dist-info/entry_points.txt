@@ -1,0 +1,4 @@
+
+      [console_scripts]
+      planet=planet.scripts:main
+      

@@ -5,7 +5,7 @@ Description: >
 
 Globals:
   Function:
-    Timeout: 30
+    Timeout: 120
 
 Parameters:
   PlanetApiKey:
@@ -29,6 +29,8 @@ Resources:
       CodeUri: lambda_functions/fetchImageFromGPSCoords/
       Handler: app.lambda_handler
       Runtime: python3.8
+      Layers:
+        - !Ref PlanetLayer
       Environment:
         Variables:
           BUCKET: !Ref Bucket
@@ -43,6 +45,17 @@ Resources:
             RestApiId: !Ref PlanetApi
             Path: /image/gps/{coords+}
             Method: get
+
+  PlanetLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+        LayerName: planet-dependencies
+        Description: Dependencies for stuff
+        ContentUri: dependencies/
+        CompatibleRuntimes:
+          - python3.8
+        LicenseInfo: 'MIT'
+        RetentionPolicy: Retain
   
   Bucket:
       Type: AWS::S3::Bucket

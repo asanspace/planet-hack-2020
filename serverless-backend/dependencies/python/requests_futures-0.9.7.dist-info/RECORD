@@ -1,0 +1,8 @@
+requests_futures-0.9.7.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+requests_futures-0.9.7.dist-info/LICENSE,sha256=RHvJZU1G4rMB6sFmhrNzBkWEZxf1pf9ACxd7KCRbQI0,582
+requests_futures-0.9.7.dist-info/METADATA,sha256=WND0T2hD7hKqyDUcXO-KxBvklqamddEm5wsJ234OFtE,5221
+requests_futures-0.9.7.dist-info/RECORD,,
+requests_futures-0.9.7.dist-info/WHEEL,sha256=f4PqOcdVW6HasG8DyXAmXjAicykhyNoHtT9u8MY-CUU,93
+requests_futures-0.9.7.dist-info/top_level.txt,sha256=w25exnX7SV9aItrEhYGwv9JSUxInGdM4zTjj_u-ue0Y,17
+requests_futures/__init__.py,sha256=o-tkjepWYBiNdrweMITWAVCgsovatV_wdPnD3pGI2JQ,590
+requests_futures/sessions.py,sha256=MGwio0kJfzWZ-ukPEYKxA0YelhgiMPFfLhfNwBCjvos,2820
