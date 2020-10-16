@@ -1,3 +1,4 @@
 planet
 requests
 python-osc
+numpy

@@ -6,6 +6,10 @@ import requests
 import time
 from sys import stdout
 import json 
+import numpy as np
+from pythonosc import udp_client
+
+client = udp_client.SimpleUDPClient("127.0.0.1", 4559) # port Sonic Pi is listening on
 
 
 apikey = "edc98de4edd14e0c9cc393a6994876f4"
@@ -50,3 +54,9 @@ for item in results.items_iter(limit=limit):
     stdout.write('{0},{cloud_cover},{acquired}\n'.format(item['id'], **props))
 
 print(coverVals)
+
+
+arp = (15*(coverVals - np.min(coverVals))/np.ptp(coverVals)).astype(int)  
+print(arp)
+
+client.send_message("/trigger/prophet", arp)
