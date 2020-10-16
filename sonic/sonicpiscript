@@ -24,18 +24,16 @@ arp = sync "/osc*/trigger/prophet"
 iter = 1
 frame = 0
 
-with_fx :echo do
-  live_loop :test do
-    mynote = arp[iter % 16] # iterate over the sequence – this is where your normalized data go
-    # myrand = arp[rand_i(16)] # random value from the arp
-    
-    if ((iter % 16) == 0)  # at the end of the sequence
-      frame = frame+1
-    end
-    
-    play (revtrag[(frame % 4)])[mynote]
-    
-    iter = iter+1
-    sleep 0.2
+live_loop :test do
+  mynote = arp[iter % 16] # iterate over the sequence – this is where your normalized data go
+  # myrand = arp[rand_i(16)] # random value from the arp
+  
+  if ((iter % 16) == 0)  # at the end of the sequence
+    frame = frame+1
   end
+  
+  play (revtrag[(frame % 4)])[mynote]
+  
+  iter = iter+1
+  sleep 0.2
 end
