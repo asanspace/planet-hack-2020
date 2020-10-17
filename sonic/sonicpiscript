@@ -18,7 +18,7 @@ wagon = [gmaj, dmaj, emin, cmaj]
 purty = [cmaj, emin, fmaj, fmin]
 
 arp = [0,2,4,7,9,11,14,16,18,21,23,25,28,30,32,35] # note values for arpeggiation, 0-indexed
-datain = sync "/osc*/trigger/prophet" # incoming data, normalized to those 16 values
+arrayin = sync "/osc*/trigger/prophet" # incoming data, normalized to those 16 values
 
 # use_synth :blade
 
@@ -26,7 +26,8 @@ iter = 1
 frame = 0
 
 live_loop :test do
-  mynote = arp[datain] # select note from arp list, by datain value
+  notein = arrayin[iter]
+  mynote = arp[notein] # select note from arp list, by datain value
   # myrand = arp[rand_i(16)] # random value from the arp
   
   if ((iter % 16) == 0)  # at the end of the sequence
