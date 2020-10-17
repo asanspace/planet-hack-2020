@@ -57,6 +57,7 @@ print(coverVals)
 
 
 arp = (15*(coverVals - np.min(coverVals))/np.ptp(coverVals)).astype(int)  
+arp = arp.tolist()
 print(arp)
 
 oscclient.send_message("/trigger/prophet", arp)
