@@ -1,5 +1,5 @@
 # Cloud Sonification
-Moheeb Zara, Alex Glow, Tanya Harrison, Melissa Lamoreaux
+[Moheeb Zara](http://twitter.com/virgilvox), [Alex Glow](http://twitter.com/glowascii), Tanya Harrison, Melissa Lamoreaux
 
 ## The project
 Moheeb used Python with the Planet API to grab cloud-cover data from images of a particular area (Egypt) in a particular slice of time.
