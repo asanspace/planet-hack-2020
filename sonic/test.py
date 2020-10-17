@@ -17,7 +17,7 @@ apikey = "edc98de4edd14e0c9cc393a6994876f4"
 ddir = "/"
 sdate = "2020-10-05"
 edate = "2020-10-07"
-limit = 16
+limit = 64
 
 f = open('explorer-aoi.geojson',) 
   
