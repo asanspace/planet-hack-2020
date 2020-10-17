@@ -9,7 +9,7 @@ import json
 import numpy as np
 from pythonosc import udp_client
 
-oscclient = udp_client.SimpleUDPClient("127.0.0.1", 4559) # port Sonic Pi is listening on
+oscclient = udp_client.SimpleUDPClient("127.0.0.1", 4560) # port Sonic Pi is listening on
 
 
 apikey = "edc98de4edd14e0c9cc393a6994876f4"
