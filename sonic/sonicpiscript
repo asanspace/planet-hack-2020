@@ -27,6 +27,7 @@ frame = 0
 
 live_loop :test do
   notein = arrayin[iter]
+  puts notein
   mynote = arp[notein] # select note from arp list, by datain value
   # myrand = arp[rand_i(16)] # random value from the arp
   
